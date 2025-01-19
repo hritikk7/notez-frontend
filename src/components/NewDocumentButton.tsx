@@ -1,15 +1,16 @@
-"use-client";
+"use client";
 import { useTransition } from "react";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
+import { createNewDocument } from "../../actions/actions";
 
 function NewDocumentButton() {
-  const router = useRouter();
 
-  const [isPending, setUseTransition] = useTransition();
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
   const handleCreateNewDoc = () => {
-    setUseTransition(async () => {
-      const { docId } = createNewDocument();
+    startTransition(async () => {
+      const { docId } = await createNewDocument();
       router.push(`/doc/${docId}`);
     });
   };

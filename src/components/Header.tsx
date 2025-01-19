@@ -10,14 +10,13 @@ import {
 
 function Header() {
   const { user } = useUser();
-  console.log(user);
+  console.log("user", user);
 
   return (
     <div className="p-5 flex items-center justify-between">
       {user && (
         <h1 className="text-xl">
-          {user.firstName}
-          {`'s`} Space
+          {`${user.firstName}'s Space`}
         </h1>
       )}
       <div className="">
@@ -25,7 +24,7 @@ function Header() {
           <SignInButton />
         </SignedOut>
         <SignedIn>
-          <UserButton  />
+          <UserButton />
         </SignedIn>
       </div>
     </div>
